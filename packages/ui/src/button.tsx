@@ -8,8 +8,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-fuchsia-600 text-white border-8 border-yellow-400",
+        default: "",
         outline:
           "border border-gray-300 bg-white hover:bg-gray-100",
         ghost:
@@ -38,14 +37,26 @@ export function Button({
   size,
   ...props
 }: ButtonProps) {
+  const isDefault = !variant || variant === "default";
+
   return (
-  <button
-    style={{
-      backgroundColor: "black",
-      color: "white",
-      padding: "12px 24px",
-    }}
-    {...props}
-  />
-);
+    <button
+      className={cn(
+        buttonVariants({
+          variant,
+          size,
+        }),
+        className
+      )}
+      style={
+        isDefault
+          ? {
+              backgroundColor: "var(--primary)",
+              color: "var(--primary-foreground)",
+            }
+          : undefined
+      }
+      {...props}
+    />
+  );
 }

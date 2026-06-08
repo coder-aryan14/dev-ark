@@ -5,18 +5,17 @@ import { Label } from "@repo/ui/label";
 
 export default function Home() {
   return (
-    <>
-    <div className="bg-red-500 p-10 text-white">
-  Tailwind Test
-</div>
-<div className="rounded-xl border border-green-500 bg-green-100 p-6">
-  Local Tailwind Test
-</div>
+    
+   
     <main className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-md">
-        <h1 className="mb-6 text-3xl font-bold">
-          DevArk
-        </h1>
+       <h1 className="text-4xl font-bold">
+  DevArk
+</h1>
+
+<p className="mt-2 text-sm text-gray-500">
+  AI-Powered Creator Growth OS
+</p>
 
         <div className="space-y-4">
           <div>
@@ -41,6 +40,6 @@ export default function Home() {
         </div>
       </Card>
     </main>
-    </>
+    
   );
 }
