@@ -15,6 +15,13 @@
       "when": 1781164131549,
       "tag": "0001_brown_virginia_dare",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781868824250,
+      "tag": "0002_smart_mockingbird",
+      "breakpoints": true
     }
   ]
 }
