@@ -2,9 +2,16 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { getSession } from "../../src/lib/auth/server";
+import { DashboardLayout } from "../../src/components/dashboard/dashboard-layout";
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@repo/ui/card";
 
 import { getCreatorProfileByUserId } from "@repo/db";
-import { DashboardLayout } from "../../src/components/dashboard/dashboard-layout";
 
 export default async function DashboardPage() {
   const session = await getSession(await headers());
@@ -22,48 +29,54 @@ export default async function DashboardPage() {
   }
 
   return (
-  <DashboardLayout
-    name={session.user.name}
-  >
-    <div className="grid gap-6 md:grid-cols-2">
-      <div className="rounded-lg border p-6">
-        <h2 className="font-semibold">
-          Creator Profile
-        </h2>
+    <DashboardLayout name={session.user.name}>
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>
+              Creator Profile
+            </CardTitle>
+          </CardHeader>
 
-        <p>
-          Niche: {profile.niche}
-        </p>
+          <CardContent>
+            <p>
+              Niche: {profile.niche}
+            </p>
 
-        <p>
-          Platform: {profile.primaryPlatform}
-        </p>
+            <p>
+              Platform: {profile.primaryPlatform}
+            </p>
 
-        <p>
-          Followers: {profile.followerCount}
-        </p>
+            <p>
+              Followers: {profile.followerCount}
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>
+              Creator Score
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <p>Coming Soon</p>
+          </CardContent>
+        </Card>
+
+        <Card className="md:col-span-2">
+          <CardHeader>
+            <CardTitle>
+              Recommendations
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <p>Coming Soon</p>
+          </CardContent>
+        </Card>
       </div>
-
-      <div className="rounded-lg border p-6">
-        <h2 className="font-semibold">
-          Creator Score
-        </h2>
-
-        <p>
-          Coming Soon
-        </p>
-      </div>
-
-      <div className="rounded-lg border p-6">
-        <h2 className="font-semibold">
-          Recommendations
-        </h2>
-
-        <p>
-          Coming Soon
-        </p>
-      </div>
-    </div>
-  </DashboardLayout>
-);
+    </DashboardLayout>
+  );
 }
