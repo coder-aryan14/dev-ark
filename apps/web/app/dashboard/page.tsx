@@ -1,3 +1,4 @@
+import { MetricCard } from "../../src/components/dashboard/metric-card";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -30,53 +31,66 @@ export default async function DashboardPage() {
 
   return (
     <DashboardLayout name={session.user.name}>
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              Creator Profile
-            </CardTitle>
-          </CardHeader>
+     <div className="space-y-6">
+  <div className="grid gap-4 md:grid-cols-4">
+    <MetricCard
+      title="Followers"
+      value={profile.followerCount}
+    />
 
-          <CardContent>
-            <p>
-              Niche: {profile.niche}
-            </p>
+    <MetricCard
+      title="Platform"
+      value={profile.primaryPlatform}
+    />
 
-            <p>
-              Platform: {profile.primaryPlatform}
-            </p>
+    <MetricCard
+      title="Niche"
+      value={profile.niche}
+    />
 
-            <p>
-              Followers: {profile.followerCount}
-            </p>
-          </CardContent>
-        </Card>
+    <MetricCard
+      title="Creator Score"
+      value="72/100"
+      description="Placeholder"
+    />
+  </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              Creator Score
-            </CardTitle>
-          </CardHeader>
+  <Card>
+    <CardHeader>
+      <CardTitle>
+        Creator Profile
+      </CardTitle>
+    </CardHeader>
 
-          <CardContent>
-            <p>Coming Soon</p>
-          </CardContent>
-        </Card>
+    <CardContent>
+      <p>
+        Niche: {profile.niche}
+      </p>
 
-        <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle>
-              Recommendations
-            </CardTitle>
-          </CardHeader>
+      <p>
+        Platform: {profile.primaryPlatform}
+      </p>
 
-          <CardContent>
-            <p>Coming Soon</p>
-          </CardContent>
-        </Card>
-      </div>
+      <p>
+        Followers: {profile.followerCount}
+      </p>
+    </CardContent>
+  </Card>
+
+  <Card>
+    <CardHeader>
+      <CardTitle>
+        Recommendations
+      </CardTitle>
+    </CardHeader>
+
+    <CardContent>
+      <p>
+        Coming Soon
+      </p>
+    </CardContent>
+  </Card>
+</div>
     </DashboardLayout>
   );
 }
